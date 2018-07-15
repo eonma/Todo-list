@@ -16,6 +16,15 @@ public class Constants {
 	public static final String SHOW_TODAY = "/todolist/today";
 	public static final String SHOW_COMPLETED = "/todolist/completed";
 	
+	// Task status
+	public static final String TASK_STATUS_PENDING = "P";
+	public static final String TASK_STATUS_COMPLETED = "C";
+	
+	// DB config
+	public static final String DB_URL = "jdbc:mysql://zpj83vpaccjer3ah.chr7pe7iynqr.eu-west-1.rds.amazonaws.com:3306/g02uljxkq1rme8fu";
+	public static final String DB_USER = "lg6w9m09v39yh719";
+	public static final String DB_PASSWORD = "z5i27lo4s7p0ni1h";
+			
 	// DB table constants
 	public static final String TABLE_TASK_ID = "id";
 	public static final String TABLE_TASK_TITLE = "title";

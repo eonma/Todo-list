@@ -20,6 +20,7 @@ import com.cm.todolist.service.TaskService;
 import com.cm.todolist.service.TaskServiceImpl;
 
 /**
+ * ToDoListController - this is the controller for all the views
  * @author chenma
  *
  */
@@ -27,10 +28,15 @@ import com.cm.todolist.service.TaskServiceImpl;
 public class ToDoListController {
 	private final Logger logger = LoggerFactory.getLogger(ToDoListController.class);
 	
+	/**
+	 * Show all the tasks
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value = "/all", method = RequestMethod.GET)
 	public String showAll(Model model){
 		
-		logger.debug("showAllLists()");
+		logger.debug("showAll()");
 		
 		TaskService taskService = new TaskServiceImpl();
 		List<Task> tasks = taskService.getAll();
@@ -40,6 +46,11 @@ public class ToDoListController {
 		return Constants.SHOW_ALL_LIST;
 	}
 	
+	/**
+	 * Show all the tasks due today
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value = "/today", method = RequestMethod.GET)
 	public String showToday(Model model){
 		
@@ -53,6 +64,11 @@ public class ToDoListController {
 		return Constants.SHOW_TODAY;
 	}
 	
+	/**
+	 * Show all the tasks due this week
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value = "/week", method = RequestMethod.GET)
 	public String showWeek(Model model){
 		
@@ -66,6 +82,11 @@ public class ToDoListController {
 		return Constants.SHOW_TODAY;
 	}
 	
+	/**
+	 * Show all completed tasks
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value = "/completed", method = RequestMethod.GET)
 	public String showCompleted(Model model){
 		

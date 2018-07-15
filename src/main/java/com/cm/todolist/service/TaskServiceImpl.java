@@ -35,11 +35,12 @@ public class TaskServiceImpl implements TaskService {
 
 		List<Task> taskList = new ArrayList<Task>();
 		
-		List<Task> tasks = taskDao.findByStatus("P");
+		List<Task> tasks = taskDao.findByStatus(Constants.TASK_STATUS_PENDING);
 		Iterator<Task> it = tasks.iterator();
 		while (it.hasNext()){
 			Task task = it.next();
 			Date dueDate = task.getDueDate();
+			
 			if (dueDate != null){
 				Calendar taskCal = new GregorianCalendar(); 
 				taskCal.setTime(dueDate);     
@@ -53,10 +54,12 @@ public class TaskServiceImpl implements TaskService {
 				int yearToday = todayCal.get(Calendar.YEAR);
 				int monthToday = todayCal.get(Calendar.MONTH);
 				int dayToday = todayCal.get(Calendar.DATE);
-			
+				
+				// Set due today flag
 				if (yearTask == yearToday && monthTask == monthToday && dayTask == dayToday){
 					task.setToday(true);
-				} else {
+				} else { 
+					// Set over due flag
 					if (dueDate.after(today)){
 						task.setOverDue(false);
 					} else {
@@ -66,7 +69,6 @@ public class TaskServiceImpl implements TaskService {
 			}
 			taskList.add(task);
 		}
-		
 		return taskList;
 	}
 

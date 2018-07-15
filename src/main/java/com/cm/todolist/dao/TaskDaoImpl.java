@@ -66,24 +66,22 @@ public class TaskDaoImpl implements TaskDao {
 			};
 			
 		} catch (SQLException e) {
-			logger.error("SQL Query Error!", e);
+			logger.error("Query can not be executed due to a SQL error!", e);
 		} catch (ClassNotFoundException e) {
-			logger.error("Class not found", e);
+			logger.error("Can not find database connection class", e);
 		} finally{
 			if (prepStatement != null) {
 				try {
 					prepStatement.close();
 				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					logger.error("PreparedStatement can not be closed!", e);
 				}
 			}
 			if (conn != null) {
 				try {
 					conn.close();
 				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					logger.error("Connection can not be closed!", e);
 				}
 			}
 		}
@@ -119,24 +117,22 @@ public class TaskDaoImpl implements TaskDao {
 			};
 			
 		} catch (SQLException e) {
-			logger.error("SQL Query Error!", e);
+			logger.error("Query can not be executed due to a SQL error!", e);
 		} catch (ClassNotFoundException e) {
-			logger.error("Class not found", e);
+			logger.error("Can not find database connection class", e);
 		} finally{
 			if (prepStatement != null) {
 				try {
 					prepStatement.close();
 				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					logger.error("PreparedStatement can not be closed!", e);
 				}
 			}
 			if (conn != null) {
 				try {
 					conn.close();
 				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					logger.error("Connection can not be closed!", e);
 				}
 			}
 		}
@@ -172,24 +168,22 @@ public class TaskDaoImpl implements TaskDao {
 			};
 			
 		} catch (SQLException e) {
-			logger.error("SQL Query Error!", e);
+			logger.error("Query can not be executed due to a SQL error!", e);
 		} catch (ClassNotFoundException e) {
-			logger.error("Class not found", e);
+			logger.error("Can not find database connection class", e);
 		} finally{
 			if (prepStatement != null) {
 				try {
 					prepStatement.close();
 				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					logger.error("PreparedStatement can not be closed!", e);
 				}
 			}
 			if (conn != null) {
 				try {
 					conn.close();
 				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					logger.error("Connection can not be closed!", e);
 				}
 			}
 		}
@@ -215,24 +209,22 @@ public class TaskDaoImpl implements TaskDao {
 
 			
 		} catch (SQLException e) {
-			logger.error("SQL Query Error!", e);
+			logger.error("Query can not be executed due to a SQL error!", e);
 		} catch (ClassNotFoundException e) {
-			logger.error("Class not found", e);
+			logger.error("Can not find database connection class", e);
 		} finally{
 			if (prepStatement != null) {
 				try {
 					prepStatement.close();
 				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					logger.error("PreparedStatement can not be closed!", e);
 				}
 			}
 			if (conn != null) {
 				try {
 					conn.close();
 				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					logger.error("Connection can not be closed!", e);
 				}
 			}
 		}
@@ -256,27 +248,24 @@ public class TaskDaoImpl implements TaskDao {
 			prepStatement.setInt(5, task.getId());
 			
 			prepStatement.executeUpdate();
-
 			
 		} catch (SQLException e) {
-			logger.error("SQL Query Error!", e);
+			logger.error("Query can not be executed due to a SQL error!", e);
 		} catch (ClassNotFoundException e) {
-			logger.error("Class not found", e);
+			logger.error("Can not find database connection class", e);
 		} finally{
 			if (prepStatement != null) {
 				try {
 					prepStatement.close();
 				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					logger.error("PreparedStatement can not be closed!", e);
 				}
 			}
 			if (conn != null) {
 				try {
 					conn.close();
 				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					logger.error("Connection can not be closed!", e);
 				}
 			}
 		}
@@ -296,27 +285,24 @@ public class TaskDaoImpl implements TaskDao {
 			prepStatement.setString(1, "C");
 			prepStatement.setInt(2, id);
 			prepStatement.executeUpdate();
-
 			
 		} catch (SQLException e) {
-			logger.error("SQL Query Error!", e);
+			logger.error("Query can not be executed due to a SQL error!", e);
 		} catch (ClassNotFoundException e) {
-			logger.error("Class not found", e);
+			logger.error("Can not find database connection class", e);
 		} finally{
 			if (prepStatement != null) {
 				try {
 					prepStatement.close();
 				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					logger.error("PreparedStatement can not be closed!", e);
 				}
 			}
 			if (conn != null) {
 				try {
 					conn.close();
 				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					logger.error("Connection can not be closed!", e);
 				}
 			}
 		}
@@ -351,24 +337,22 @@ public class TaskDaoImpl implements TaskDao {
 			};
 			
 		} catch (SQLException e) {
-			logger.error("SQL Query Error!", e);
+			logger.error("Query can not be executed due to a SQL error!", e);
 		} catch (ClassNotFoundException e) {
-			logger.error("Class not found", e);
+			logger.error("Can not find database connection class", e);
 		} finally{
 			if (prepStatement != null) {
 				try {
 					prepStatement.close();
 				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					logger.error("PreparedStatement can not be closed!", e);
 				}
 			}
 			if (conn != null) {
 				try {
 					conn.close();
 				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					logger.error("Connection can not be closed!", e);
 				}
 			}
 		}

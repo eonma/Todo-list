@@ -5,8 +5,6 @@
  */
 package com.cm.todolist.controller;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -22,6 +20,10 @@ import com.cm.todolist.service.TaskService;
 import com.cm.todolist.service.TaskServiceImpl;
 
 /**
+ * TaskController - this is the controller of task activities:
+ * 		-- edit - update an existing task
+ * 		-- complete - mark the task as completed
+ * 		-- save - add a new task
  * @author chenma
  *
  */
@@ -30,19 +32,29 @@ public class TaskController {
 	
 	private final Logger logger = LoggerFactory.getLogger(TaskController.class);
 
-	
+	/**
+	 * 
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value = "/edit", method = RequestMethod.GET)
 	public String showEditTask(Model model){
 		logger.debug("saveTask()");
-	
 		model.addAttribute("task", new Task());
-
 		return Constants.SHOW_ALL_LIST;
 		
 	}
-
+	
+	/**
+	 * Edit a task
+	 * @param task
+	 * @param result
+	 * @param model
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping(value = "/edit", method = RequestMethod.POST)
-	public String editTask(@ModelAttribute("task") Task task, BindingResult result, Model model, HttpServletRequest request){
+	public String editTask(@ModelAttribute("task") Task task, BindingResult result, Model model){
 		logger.debug("editTask()");
 	
 		TaskService taskService = new TaskServiceImpl();
@@ -53,7 +65,11 @@ public class TaskController {
 	}
 	
 
-	
+	/**
+	 * 
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value = "/complete", method = RequestMethod.GET)
 	public String showComplete(Model model){
 		logger.debug("showComplete()");
@@ -64,6 +80,13 @@ public class TaskController {
 		
 	}
 
+	/**
+	 * Mark this task as completed
+	 * @param task
+	 * @param result
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value = "/complete", method = RequestMethod.POST)
 	public String completeTask(@ModelAttribute("task") Task task, BindingResult result, Model model){
 		logger.debug("completeTask()");
@@ -87,6 +110,13 @@ public class TaskController {
 		
 	}
 
+	/**
+	 * Save a new task
+	 * @param task
+	 * @param result
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public String saveTask(@ModelAttribute("task") Task task, BindingResult result, Model model){
 		logger.debug("saveTask()");

@@ -10,6 +10,7 @@ import java.util.List;
 import com.cm.todolist.model.Task;
 
 /**
+ * Task data access object
  * @author chenma
  *
  */
@@ -60,7 +61,7 @@ public interface TaskDao {
 	void update (Task task);
 	
 	/**
-	 * Delete current task.
+	 * Complete current task.
 	 * @param id
 	 */
 	void complete (int id);
