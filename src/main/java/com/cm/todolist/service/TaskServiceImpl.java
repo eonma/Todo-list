@@ -39,34 +39,7 @@ public class TaskServiceImpl implements TaskService {
 		Iterator<Task> it = tasks.iterator();
 		while (it.hasNext()){
 			Task task = it.next();
-			Date dueDate = task.getDueDate();
-			
-			if (dueDate != null){
-				Calendar taskCal = new GregorianCalendar(); 
-				taskCal.setTime(dueDate);     
-				int yearTask = taskCal.get(Calendar.YEAR);
-				int monthTask = taskCal.get(Calendar.MONTH);
-				int dayTask = taskCal.get(Calendar.DATE);
-				
-				Calendar todayCal = new GregorianCalendar(); 
-				todayCal.setTime(new Date());
-				Date today = new Date();
-				int yearToday = todayCal.get(Calendar.YEAR);
-				int monthToday = todayCal.get(Calendar.MONTH);
-				int dayToday = todayCal.get(Calendar.DATE);
-				
-				// Set due today flag
-				if (yearTask == yearToday && monthTask == monthToday && dayTask == dayToday){
-					task.setToday(true);
-				} else { 
-					// Set over due flag
-					if (dueDate.after(today)){
-						task.setOverDue(false);
-					} else {
-						task.setOverDue(true);
-					}
-				}
-			}
+			task = getProcessedTask(task);
 			taskList.add(task);
 		}
 		return taskList;
@@ -76,14 +49,30 @@ public class TaskServiceImpl implements TaskService {
 	 * @see com.cm.todolist.service.TaskService#getToday()
 	 */
 	public List<Task> getToday() {
-		return taskDao.findToday();
+		List<Task> taskList = new ArrayList<Task>();
+		List<Task> tasks = taskDao.findToday();
+		Iterator<Task> it = tasks.iterator();
+		while (it.hasNext()){
+			Task task = it.next();
+			task = getProcessedTask(task);
+			taskList.add(task);
+		}
+		return taskList;
 	}
 
 	/* (non-Javadoc)
 	 * @see com.cm.todolist.service.TaskService#getWeek()
 	 */
 	public List<Task> getWeek() {
-		return taskDao.findWeek();
+		List<Task> taskList = new ArrayList<Task>();
+		List<Task> tasks = taskDao.findWeek();
+		Iterator<Task> it = tasks.iterator();
+		while (it.hasNext()){
+			Task task = it.next();
+			task = getProcessedTask(task);
+			taskList.add(task);
+		}
+		return taskList;
 	}
 
 	/* (non-Javadoc)
@@ -115,5 +104,42 @@ public class TaskServiceImpl implements TaskService {
 	public void save(Task task) {
 		taskDao.save(task);
 		
+	}
+	
+	/**
+	 * Add isToday and overDue flags into task
+	 * @param task
+	 * @return
+	 */
+	private Task getProcessedTask(Task task){
+
+		Date dueDate = task.getDueDate();
+		if (dueDate != null){
+			Calendar taskCal = new GregorianCalendar(); 
+			taskCal.setTime(dueDate);     
+			int yearTask = taskCal.get(Calendar.YEAR);
+			int monthTask = taskCal.get(Calendar.MONTH);
+			int dayTask = taskCal.get(Calendar.DATE);
+			
+			Calendar todayCal = new GregorianCalendar(); 
+			todayCal.setTime(new Date());
+			Date today = new Date();
+			int yearToday = todayCal.get(Calendar.YEAR);
+			int monthToday = todayCal.get(Calendar.MONTH);
+			int dayToday = todayCal.get(Calendar.DATE);
+			
+			// Set due today flag
+			if (yearTask == yearToday && monthTask == monthToday && dayTask == dayToday){
+				task.setToday(true);
+			} else { 
+				// Set over due flag
+				if (dueDate.after(today)){
+					task.setOverDue(false);
+				} else {
+					task.setOverDue(true);
+				}
+			}
+		}
+		return task;
 	}
 }

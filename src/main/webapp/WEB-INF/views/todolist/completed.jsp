@@ -84,8 +84,7 @@
 												<a href="#collapse${task.id}" data-toggle="collapse"
 													data-parent="#accordion" class="collapsed"> 
 													<span class="milestone-title" style="text-decoration: line-through; color:grey;">
-														<i class="fa fa-check icon-indicator ${colourLable}"></i>${task.title}</span> 
-													<span class="label ${dateLable} label-transparent" style="float:right;">${task.dueDate}</span>
+														<i class="fa fa-check icon-indicator ${colourLable}"></i>${task.title}</span>
 												</a>
 											</h4>
 										</div>
