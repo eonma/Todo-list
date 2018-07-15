@@ -83,8 +83,7 @@ public class TaskServiceImpl implements TaskService {
 	 * @see com.cm.todolist.service.TaskService#getWeek()
 	 */
 	public List<Task> getWeek() {
-		// TODO Auto-generated method stub
-		return null;
+		return taskDao.findWeek();
 	}
 
 	/* (non-Javadoc)

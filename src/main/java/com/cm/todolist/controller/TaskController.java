@@ -91,7 +91,6 @@ public class TaskController {
 	public String completeTask(@ModelAttribute("task") Task task, BindingResult result, Model model){
 		logger.debug("completeTask()");
 	
-		System.out.println(task.toString());
 		TaskService taskService = new TaskServiceImpl();
 		
 		taskService.complete(task.getId());

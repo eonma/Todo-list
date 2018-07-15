@@ -79,7 +79,7 @@ public class ToDoListController {
 		model.addAttribute("tasks", tasks);
 		model.addAttribute("task", new Task());
 		
-		return Constants.SHOW_TODAY;
+		return Constants.SHOW_WEEK;
 	}
 	
 	/**

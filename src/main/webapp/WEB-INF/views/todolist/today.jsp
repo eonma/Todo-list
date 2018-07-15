@@ -43,7 +43,8 @@
 						<li class="menu-group">ToDo List</li>
 						<li><a href="all"><i class="ti-home"></i> <span class="title">All</span> </a></li>
 						<li><a href="today" class="active"><i class="ti-calendar"></i> <span class="title">Today</span> <span class="badge">${fn:length(tasks)}</span></a></li>
-						<li><a href="completed"><i class="ti-check"></i> <span class="title">Completed</span></a></li>
+						<li><a href="week"><i class="ti-layers-alt"></i> <span class="title">Week</span> </a></li>
+						<li><a href="completed"><i class="ti-check-box"></i> <span class="title">Completed</span></a></li>
 					</ul>
 					<button type="button" class="btn-toggle-minified" title="Toggle Minified Menu"><i class="ti-arrows-horizontal"></i></button>
 				</nav>

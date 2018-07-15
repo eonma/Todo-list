@@ -10,6 +10,8 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -144,14 +146,29 @@ public class TaskDaoImpl implements TaskDao {
 	 */
 	public List<Task> findWeek() {
 		PreparedStatement prepStatement = null;
-		Date today = new Date(new java.util.Date().getTime());
+		//Date today = new Date(new java.util.Date().getTime());
+		
+		LocalDate today = LocalDate.now();
+		// Go backward to get Monday
+	    LocalDate monday = today;
+	    while (monday.getDayOfWeek() != DayOfWeek.MONDAY) {
+	      monday = monday.minusDays(1);
+	    }
+	    
+	    // Go forward to get Sunday
+	    LocalDate sunday = today;
+	    while (sunday.getDayOfWeek() != DayOfWeek.SUNDAY) {
+	      sunday = sunday.plusDays(1);
+	    }
+		
 		List<Task> tasks = new ArrayList<Task> ();
 		try {
 			if (conn == null){
 				conn = DBConfig.getConnection();
 			}
 			prepStatement = conn.prepareStatement(Constants.SQL_SELECT_ALL_TASKS_WEEK);
-			prepStatement.setDate(1, today);
+			prepStatement.setDate(1, Date.valueOf(monday));
+			prepStatement.setDate(2, Date.valueOf(sunday));
 			ResultSet rs = prepStatement.executeQuery();
 			while(rs.next()){
 				int id = rs.getInt(Constants.TABLE_TASK_ID);
@@ -202,7 +219,7 @@ public class TaskDaoImpl implements TaskDao {
 			}
 			prepStatement = (PreparedStatement) conn.prepareStatement(Constants.SQL_SAVE_NEW_TASK_TITLE);
 			prepStatement.setString(1, task.getTitle());
-			prepStatement.setString(2, "P");
+			prepStatement.setString(2, Constants.TASK_STATUS_PENDING);
 			prepStatement.setDate(3, today);
 			
 			prepStatement.executeUpdate();
@@ -243,8 +260,17 @@ public class TaskDaoImpl implements TaskDao {
 			prepStatement = (PreparedStatement) conn.prepareStatement(Constants.SQL_UPDATE_TASKS_BY_ID);
 			prepStatement.setString(1, task.getTitle());
 			prepStatement.setString(2, task.getNote());
-			prepStatement.setDate(3, new Date(task.getCreateDate().getTime()));
-			prepStatement.setDate(4, new Date(task.getDueDate().getTime()));
+			if (task.getCreateDate() != null){
+				prepStatement.setDate(3, new Date(task.getCreateDate().getTime()));
+			} else {
+				prepStatement.setDate(3, null);
+			}
+			if (task.getDueDate() != null){
+				prepStatement.setDate(4, new Date(task.getDueDate().getTime()));
+			} else {
+				prepStatement.setDate(4, null);
+			}
+			
 			prepStatement.setInt(5, task.getId());
 			
 			prepStatement.executeUpdate();
@@ -282,7 +308,7 @@ public class TaskDaoImpl implements TaskDao {
 				conn = DBConfig.getConnection();
 			}
 			prepStatement = (PreparedStatement) conn.prepareStatement(Constants.SQL_COMPLETE_TASKS_BY_ID);
-			prepStatement.setString(1, "C");
+			prepStatement.setString(1, Constants.TASK_STATUS_COMPLETED);
 			prepStatement.setInt(2, id);
 			prepStatement.executeUpdate();
 			
