@@ -17,7 +17,7 @@ This project is built with [Maven](https://maven.apache.org/) - Dependency Manag
 
 ## Authors
 
-* **Chen Ma** - *Initial work* - [PurpleBooth](https://github.com/eonma)
+* **Chen Ma** - *Initial work* - [ChenMa](https://github.com/eonma)
 
 ## Acknowledgments
 
