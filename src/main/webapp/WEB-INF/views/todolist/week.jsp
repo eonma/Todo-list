@@ -66,6 +66,7 @@
 							<div class="panel-group project-accordion">
 
 								<c:forEach var="task" items="${tasks}">
+									<c:set var="taskDueDate" value="${task.dueDate }"/>
 									<c:set var="dateLable" value="label-success"/>
 									<c:set var="colourLable" value="custom-text-green3"/>
 									<c:if test = "${task.overDue}">
@@ -75,6 +76,7 @@
 									<c:if test = "${task.today}">
 										<c:set var="dateLable" value="label-warning"/>
 										<c:set var="colourLable" value="custom-text-yellow"/>
+										<c:set var="taskDueDate" value="today"/>
 									</c:if>
 									<fmt:formatDate value="${task.dueDate}" pattern="MM/dd/yyyy" var="dueDate"/>
 									<fmt:formatDate value="${task.createDate}" pattern="MM/dd/yyyy" var="createDate"/>
@@ -85,7 +87,7 @@
 													data-parent="#accordion" class="collapsed"> 
 													<span class="milestone-title">
 														<i class="fa fa-check icon-indicator ${colourLable}"></i> ${task.title}</span> 
-													<span class="label ${dateLable} label-transparent" style="float:right;">${task.dueDate}</span>
+													<span class="label ${dateLable} label-transparent" style="float:right;">${taskDueDate}</span>
 												</a>
 											</h4>
 										</div>
