@@ -132,7 +132,6 @@
 		<!-- Javascript -->
 		<script src="<c:url value="/resources/vendor/jquery/jquery.min.js" />"></script>
 		<script src="<c:url value="/resources/vendor/bootstrap/js/bootstrap.min.js" />"></script>
-		<script src="<c:url value="/resources/vendor/pace/pace.min.js" />"></script>
 		<script src="<c:url value="/resources/scripts/klorofilpro-common.js" />"></script>
 		<script src="<c:url value="/resources/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js" />"></script>
 		<script src="<c:url value="/resources/scripts/todolist.js" />"></script>
